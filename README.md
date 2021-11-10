@@ -7,8 +7,8 @@ Avian Network [AVN]
 <div align="center">
 
 [![Avian](https://img.shields.io/badge/Avian-Network-blue.svg)](https://avn.network)
-[![Downloads](https://img.shields.io/github/downloads/ChunguscoinCrypto/Chunguscoin/total)](https://avn.network)
-[![C/C++ CI](hhttps://github.com/AvianNetwork/Avian/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/AvianNetwork/Avian/actions/workflows/c-cpp.yml)
+[![Downloads](https://img.shields.io/github/downloads/AvianNetwork/Avian/total)](https://avn.network)
+[![C/C++ CI](https://github.com/AvianNetwork/Avian/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/AvianNetwork/Avian/actions/workflows/c-cpp.yml)
 
 </div>
 
