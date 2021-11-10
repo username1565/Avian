@@ -1,12 +1,18 @@
-Avian Core integration/staging tree
-=====================================
+<h1 align="center">
+Avian Network [AVN]  
+<br/><br/>
+<img src="./src/qt/res/icons/raven.png" alt="Avian" width="300"/>
+</h1>
 
-[![C/C++ CI](https://github.com/RavencoinLite/RavencoinLite/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/RavencoinLite/RavencoinLite/actions/workflows/c-cpp.yml)
+<div align="center">
 
-https://ravencoinlite.info
+[![Avian](https://img.shields.io/badge/Avian-Network-blue.svg)](https://avn.network)
+[![Downloads](https://img.shields.io/github/downloads/ChunguscoinCrypto/Chunguscoin/total)](https://avn.network)
+[![C/C++ CI](hhttps://github.com/AvianNetwork/Avian/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/AvianNetwork/Avian/actions/workflows/c-cpp.yml)
 
-What is RavencoinLite?
-----------------
+</div>
+
+# What is Avian?
 
 Avian is an experimental digital currency that enables instant payments to
 anyone, anywhere in the world. Avian uses peer-to-peer technology to operate
@@ -15,25 +21,21 @@ out collectively by the network. Avian Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Avian Core software, see https://avian.info
+the Avian Core software, see https://avn.network
 
-License
--------
-
+# License ⚖️
 Avian Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
-Development Process
--------------------
+# Development Process
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/Avian/tags/Avian/tags) are created
+completely stable. [Tags](https://github.com/AvianNetwork/Avian/tags) are created
 regularly to indicate new official, stable release versions of Avian Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Testing
--------
+# Testing
 
 Testing and code review is the bottleneck for development; we get more pull
 requests than we can review and test on short notice. Please be patient and help out by testing
@@ -45,33 +47,82 @@ Testnet is now up and running and available to use during development. There is 
 Use this command to initially start aviand on the testnet. <code>./aviand -testnet -maxtipage=259200</code>
 
 
-Running on Mainnet
--------
+# Running on Mainnet
+
 Use this command to start aviand on the mainnet.
 <code>./aviand -seednode=dnsseed.avian.info</code>
 
-### Automated Testing
+# Building
 
-Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`. Further details on running
-and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
+#### Linux
 
-There are also [regression and integration tests](/test), written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/test) are installed) with: `test/functional/test_runner.py`
+```shell
+#The following packages are needed:
+sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget libcurl4-gnutls-dev bsdmainutils automake curl
+```
 
+```shell
+git clone https://github.com/AvianNetwork/Avian
+cd avian
+./autogen.sh
+./configure
+# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
+make -j8
+#This can take some time.
+```
 
-### Manual Quality Assurance (QA) Testing
+#### OSX (Cross-compile using Linux)
 
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
+Before start, read the following docs: [depends](https://github.com/bitcoin/bitcoin/blob/master/depends/README.md) and [macdeploy](https://github.com/bitcoin/bitcoin/blob/master/contrib/macdeploy/README.md).
 
+Install dependencies:
+```
+sudo apt-get install curl librsvg2-bin libtiff-tools bsdmainutils cmake imagemagick libcap-dev libz-dev libbz2-dev python3-setuptools libtinfo5 xorriso
+```
 
-About Avian
-----------------
+Place prepared SDK file `Xcode-11.3.1-11C505-extracted-SDK-with-libcxx-headers.tar.gz` in repo root, run `./zcutil/build-mac-cross.sh` in the terminal to build.
+
+#### OSX (Native)
+Ensure you have [brew](https://brew.sh) and Command Line Tools installed.
+```shell
+# Install brew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Install Xcode, opens a pop-up window to install CLT without installing the entire Xcode package
+xcode-select --install 
+# Update brew and install dependencies
+brew update
+brew upgrade
+brew install autoconf autogen automake
+brew install binutils
+brew install protobuf
+brew install coreutils
+brew install wget
+# Clone Avian repo
+git clone https://github.com/AvianNetwork/Avian
+cd avian
+./autogen.sh
+./configure
+# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
+make -j8
+# This can take some time.
+```
+
+#### Windows
+Use a debian cross-compilation setup OR mingw for windows and run:
+```shell
+# if using linux cross-build
+sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget libcurl4-gnutls-dev bsdmainutils automake curl cmake mingw-w64
+git clone https://github.com/AvianNetwork/Avian
+cd avian
+./autogen.sh
+./configure
+# -j8 = using 8 threads for the compilation - replace 8 with number of threads you want to use
+make -j8
+#This can take some time.
+```
+
+# About Avian
+
 A digital peer to peer network for the facilitation of asset transfer.
 
 Having started development on August 12th of 2021, and active on mainnet since September 1st, Ravencoin Lite (RVL) is a fork of Ravencoin Classic (RVC), aimed primarily at bringing the means of development back into the hands of the community after RVC has been abandoned by its creators. With the RVC github locked, and software in disrepair, RVL seeks to improve upon the existing foundations by implementing the necessary updates and bug fixes need to bring the original x16r fork of Ravencoin up to par with modern cryptocurrencies. 
@@ -87,8 +138,8 @@ Thank you to the Bitcoin developers.
 The Avian project is launched based on the hard work and continuous effort of over 400 Bitcoin developers who made over 14,000 commits over the life to date of the Bitcoin project. We are eternally grateful to you for your efforts and diligence in making a secure network and for their support of free and open source software development.  The Avian experiment is made on the foundation you built.
 
 
-Abstract
-----------------
+# Abstract
+
 Avian aims to implement a blockchain which is optimized specifically for the use case of transferring assets such as securities from one holder to another. Based on the extensive development and testing of Bitcoin, Avian is built on a fork of the Bitcoin code. Key changes include a faster block reward time and a change in the number, but not weighed distribution schedule, of coins. Avian is free and open source and will be issued and mined transparently with no pre-mine, developer allocation or any other similar set aside. Avian is intended to prioritize user control, privacy and censorship resistance and be jurisdiction agnostic while allowing simple optional additional features for users based on need.
 
 
